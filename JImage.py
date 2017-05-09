@@ -13,12 +13,12 @@ def JImage(I,W):
         d = 1
     elif ws == 17:
         d = 2
-    elif ws ==32:
+    elif ws == 33:
         d=4
-    elif ws ==65:
+    elif ws == 65:
         d=8
 
-    wswidth = np.floor(ws/2)
+    wswidth = int(np.floor(ws/2))
     JI = np.zeros((m,n))
 
     for i in range(1, m+1):
@@ -50,11 +50,11 @@ def JImage(I,W):
                 M = np.array([np.mean(range(1,wid+1)), np.mean(range(1,hei+1))])
                 [z2, z1] = reg.nonzero()
                 z = np.array([z1, z2]).transpose()
-                St = sum(sqdist(z.transpose(), M.T))
+                St = np.sum(sqdist(z.transpose(), M.T))
 
-            block = zeros(ws, ws)
-            block = I(range(x1,x2), range(y1,y2))
+            block = np.zeros([ws, ws])
+            block = I[range(x1,x2)][:,range(y1, y2)]
             JValue = JCalculation(block[::d, ::d], M, St)
-            JI[i,j] = JValue
+            JI[i-1,j-1] = JValue
 
     return JI

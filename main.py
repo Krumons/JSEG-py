@@ -7,13 +7,10 @@ from JImage import JImage
 image = open_tiff('seg.jpg').ReadAsArray()
 
 [d,m,n] = image.shape
-print d
-print m
-print n
 X = image.reshape(d, n*m).transpose()
 [M,P] = kmeans2(X,16)
 map = P.reshape(m,n)
 
-#for w in range(1, 5):
-W = GenerateWindow(1)
-JI = JImage(map,W)
+for w in range(1, 5):
+    W = GenerateWindow(w)
+    JI = JImage(map,W)
