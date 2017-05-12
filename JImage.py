@@ -22,7 +22,7 @@ def JImage(I,W):
     JI = np.zeros((m,n))
 
     for i in range(1, m+1):
-        print i
+        print (float(i)/(m+1.0)) * 100.0
         for j in range(1, n+1):
             x1 = i-wswidth
             x2 = i+wswidth

@@ -16,5 +16,5 @@ def JCalculation(class_map, M, St):
         xy = np.array([x, y])
         Dist1 = np.sum(np.diag(sqdist(xy, m1.transpose())))
         Sw+= Dist1
-
-    return np.float64(St-Sw)/Sw
+    J = np.float64(St-Sw)/Sw
+    return 0 if J==float('Inf') else J
