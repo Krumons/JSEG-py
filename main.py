@@ -6,6 +6,8 @@ from GenerateWindow import GenerateWindow
 from JImage import JImage
 from class2Img import class2Img
 from ValleyD import ValleyD
+from ValleyG1 import ValleyG1
+from ValleyG2 import ValleyG2
 
 image = open_tiff('seg.jpg').ReadAsArray()
 
@@ -16,25 +18,20 @@ map = P.reshape(m,n)
 
 JImages = []
 
-# for w in range(1, 5):
-#      W = GenerateWindow(w)
-#      JI = JImage(map,W)
-#      JImages.append(JI)
-
-W = GenerateWindow(1)
-JI = JImage(map,W)
-JImages.append(JI)
-
-#JImages.append(sio.loadmat('2.mat'))
-np.savetxt("foo.csv", JI, delimiter=",")
-
-
+ for w in range(1, 5):
+      W = GenerateWindow(w)
+      JI = JImage(map,W)
+      JImages.append(JI)
 
 ImQ = class2Img(map, image)
 Region = np.zeros((m,n))
 
-#Scale1
+#Scale4
 
-u = np.mean(JImages[0])
-s = JImages[0].std(axis=0)
-Region = ValleyD(JImages[0], 4, u, s)
+u = np.mean(JImages[3])
+s = JImages[3].std(axis=0)
+Region = ValleyD(JImages[3], 4, u, s)
+Region = ValleyG1(JImages[3], Region)
+Region = ValleyG1(JImages[2], Region)
+Region = ValleyG2(JImages[0], Region)
+Region4 = Region
