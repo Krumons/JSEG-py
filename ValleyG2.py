@@ -15,7 +15,6 @@ def ValleyG2(JI, Region):
     BRegion = ndimage.binary_dilation(Region, [[0,1,0],[1,1,1],[0,1,0]])
     Boundary = np.logical_and(BRegion, np.logical_not(Region))
     sq = np.asarray(Boundary.ravel().nonzero())
-    print sq.shape
     JValue = JI.flatten('F')[sq]
     [hp, hpid] = build_heap(JValue, sq)
     x_direction = [-1, 0, 1, 0]

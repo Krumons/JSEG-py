@@ -8,7 +8,6 @@ from scipy import ndimage
 def build_heap(x, sq):
     l = len(x)-1
     hp = np.asarray(x)
-    print sq.shape
     hpind = np.asarray(sq)
     for i in range(1,l):
         curnode = i

@@ -49,5 +49,4 @@ def heap_pop(hp, hpind):
             hpind[curnode] = hpind[sonnode1]
             hpind[sonnode1] = tmp
             curnode = sonnode1
-            print minind
     return [hp, hpind, minval, minind]
