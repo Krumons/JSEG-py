@@ -3,6 +3,7 @@ import numpy as np
 from sqdist import sqdist
 import scipy as sp
 from scipy.ndimage import label
+import time
 
 def ValleyD(JI, scale, uj, sj):
     [ m , n ] = JI.shape
@@ -24,4 +25,6 @@ def ValleyD(JI, scale, uj, sj):
             for k in range(1,VSize):
                 ValleyI[(VP_lab==sq[k]).nonzero()] = k
             MaxVSize = VSize
+
+    import scipy.misc
     return ValleyI

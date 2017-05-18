@@ -41,4 +41,4 @@ def ValleyG2(JI, Region):
                         [hp,hpid] = heap_add(hp, hpid, J, P)
                         BRegion[x,y] = curval
     SegI = Region
-    return Region
+    return Region.astype(int)

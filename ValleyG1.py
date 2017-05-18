@@ -15,8 +15,8 @@ def ValleyG1(JI, ValleyI):
     u = np.mean(JHigh)
     sq_medth = sq_remain[(JHigh < u)-1]
 
-    sel = ndimage.generate_binary_structure(2, 1)
-    bw_ValleyI = ndimage.binary_dilation(ValleyI, sel)
+    se1 = ndimage.generate_binary_structure(2, 1)
+    bw_ValleyI = ndimage.binary_dilation(ValleyI, se1)
     GArea = np.zeros((m,n), dtype=bool)
     GArea[sq_medth-1] = 1
     bw_GArea = np.asarray(sp.ndimage.label(GArea))[0]
@@ -29,4 +29,4 @@ def ValleyG1(JI, ValleyI):
         if numnnz == 1:
             tmp = tmp[tmp>0]
             SegI[sq] = tmp
-    return SegI
+    return SegI.astype(int)
